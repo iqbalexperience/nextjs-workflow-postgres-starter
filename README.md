@@ -2,21 +2,40 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up and run the project:
 
+### 1. Install Dependencies
+Install the project dependencies using `pnpm`:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Configure the Database
+Create a PostgreSQL database and add the connection string to your `.env` file (you can copy `env.example` to `.env` as a starting point):
+```env
+WORKFLOW_POSTGRES_URL=postgres://postgres:mysecretpassword@localhost:5432/your_database_name
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Initialize the Workflow Database
+Run the setup script to initialize the required PostgreSQL tables for the workflow:
+```bash
+npx workflow-postgres-setup
+```
+
+### 4. Run the Development Server
+Start the Next.js development server:
+```bash
+pnpm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+### 5. Launch Workflow Observability
+In a separate terminal, start the workflow web dashboard to observe your workflows:
+```bash
+npx workflow web
+```
+
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
